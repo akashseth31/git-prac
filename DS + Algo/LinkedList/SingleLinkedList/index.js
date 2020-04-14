@@ -1,12 +1,13 @@
 /**
  * Single Linked List Operations
- * Add
- * ** Add first
- * ** Add Last
- * ** insert at index
- * Remove
- * ** Remove from front
- * ** Remove from Last
+ * Add $
+ * ** Add first $
+ * ** Add Last $
+ * ** insert at index $
+ * Remove $
+ * ** Remove from front $
+ * ** Remove from Last $
+ * ** Remove from index
  * Count
  * Iterate
  * reverse the linked list
@@ -78,9 +79,55 @@ class SingleLL {
         }
     }
 
+    // remove first
+    removeFirst() {
+        if(!this.head) {
+            console.log('List is empty. Can\'t remove first element');
+            return;
+        }
+        this.head = this.head.next;
+    }
+
+    // remove last
+    removeLast() {
+        if(!this.head) {
+            console.log('List is empty. Can\'t remove last element');
+            return;
+        }
+        if(this.size() === 1) {
+            this.head = null;
+            return;
+        }
+        let current = this.head;
+        while(current.next.next) {
+            current = current.next;
+        }
+        current.next = null;
+    }
+
+    // remove at index
+    removeAt(index) {
+        const size = this.size();
+        if(size === 0 || index < 0 || index > size - 1) {
+            console.log("Empty list or invalid index.");
+            return;
+        }
+
+        let current = this.head;
+        let prev;
+        let count = 0;
+        while(count < index) {
+            count++;
+            prev = current;
+            current = current.next;
+        }
+        prev.next = current.next;
+    }
+
     iterate() {
         if (!this.head) {
             console.log('List is empty!');
+            return;
         }
         let current = this.head;
         while (current) {
@@ -105,6 +152,10 @@ class SingleLL {
 const sll = new SingleLL();
 sll.iterate();
 console.log('Size ===', sll.size());
+sll.removeFirst();
+sll.removeLast();
+sll.removeAt(0);
+console.log('******staring addition********');
 sll.addFirst(5);
 sll.addFirst(16);
 sll.insertAt('Rudra', 1);
@@ -114,5 +165,13 @@ sll.addLast(666);
 sll.insertAt('Ishu', 1);
 sll.iterate();
 console.log('Size ===', sll.size());
+console.log('******staring deletion********');
+// sll.removeFirst();
+// sll.removeLast();
+sll.removeAt(0);
+sll.iterate();
+console.log('Size ===', sll.size());
+sll.removeFirst
+
 
 
