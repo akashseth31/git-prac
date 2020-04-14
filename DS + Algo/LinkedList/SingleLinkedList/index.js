@@ -112,7 +112,10 @@ class SingleLL {
             console.log("Empty list or invalid index.");
             return;
         }
-
+        if(index === 0) {
+            this.head = this.head.next;
+            return;
+        }
         let current = this.head;
         let prev;
         let count = 0;
@@ -121,6 +124,7 @@ class SingleLL {
             prev = current;
             current = current.next;
         }
+        // console.log(count, prev);
         prev.next = current.next;
     }
 
@@ -166,8 +170,8 @@ sll.insertAt('Ishu', 1);
 sll.iterate();
 console.log('Size ===', sll.size());
 console.log('******staring deletion********');
-// sll.removeFirst();
-// sll.removeLast();
+sll.removeFirst();
+sll.removeLast();
 sll.removeAt(0);
 sll.iterate();
 console.log('Size ===', sll.size());
